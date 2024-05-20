@@ -8,10 +8,12 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-color: #242424; /* Altere esta cor para a desejada */
+            background-color: #242424;
+            color: #f0f0f0;
         }
         header {
             background-color: #f0f0f0;
+            color: #333;
             padding: 20px;
         }
         h1 {
@@ -25,6 +27,9 @@
             text-decoration: none;
             color: #333;
         }
+        nav a:hover {
+            color: #007BFF;
+        }
         .links-section {
             margin: 20px;
         }
@@ -37,6 +42,7 @@
         .networks-images {
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
             gap: 20px;
             margin-top: 20px;
         }
@@ -44,11 +50,49 @@
             width: 160px;
             height: 160px;
         }
-        /* Definindo a cor para o título <h2> */
-        #my-networks h2 {
-            color: rgb(136, 136, 146); /* Altere a cor conforme necessário */
-            /*text-align: left;*/
-            font-size: 34px; /* Altere o tamanho conforme necessário */
+        #my-networks h2, #Skills h2, #project-gallery h2 {
+            color: rgb(136, 136, 146);
+            font-size: 34px;
+        }
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .gallery-item {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+        .gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .gallery .overlay {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            border-radius: 0 0 10px 10px;
+        }
+        footer {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        @media (max-width: 768px) {
+            .networks-images img, .gallery-item {
+                width: 120px;
+                height: 120px;
+            }
         }
     </style>
 </head>
@@ -64,28 +108,80 @@
     <main>
         <section id="about">
             <p>A página está em desenvolvimento.</p>
-            
         </section>
         <section id="my-networks" class="links-section">
             <h2>My Networks</h2>
             <div class="networks-images">
                 <a href="https://www.instagram.com/gabriel_j.s_labs/" target="_blank">
-                    <img src="my_networks_img/Instagram.jpg" alt="Scratch">
+                    <img src="my_networks_img/Instagram.jpg" alt="Instagram de Gabriel J Santos">
                 </a>
                 <a href="https://github.com/gabrieljsantos" target="_blank">
-                    <img src="my_networks_img/GitHub.jpg" alt="GitHub">
+                    <img src="my_networks_img/GitHub.jpg" alt="GitHub de Gabriel J Santos">
                 </a>
                 <a href="https://www.thingiverse.com/3n1ac/designs" target="_blank">
-                    <img src="my_networks_img/Thingiverse.jpg" alt="Thingiverse">
+                    <img src="my_networks_img/Thingiverse.jpg" alt="Thingiverse de Gabriel J Santos">
                 </a>
                 <a href="https://scratch.mit.edu/users/3N1AC/" target="_blank">
-                    <img src="my_networks_img/Scratch.jpg" alt="Scratch">
+                    <img src="my_networks_img/Scratch.jpg" alt="Scratch de Gabriel J Santos">
                 </a>
                 <a href="https://www.linkedin.com/in/gabriel-j-santos/" target="_blank">
-                    <img src="my_networks_img/Linkedin.jpg" alt="LinkedIn">
+                    <img src="my_networks_img/Linkedin.jpg" alt="LinkedIn de Gabriel J Santos">
                 </a>
-                <!-- Adicione mais imagens conforme necessário -->
             </div>
+        </section>
+        <section id="Skills" class="links-section">
+            <h2>Skills</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="skills_img/CorelDRAW.jpg" alt="CorelDRAW">
+                    <div class="overlay">CorelDRAW</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="skills_img/Blender.jpg" alt="Blender">
+                    <div class="overlay">Blender</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="skills_img/SketchUp.jpg" alt="SketchUp">
+                    <div class="overlay">SketchUp</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="skills_img/Modellus.jpg" alt="Modellus">
+                    <div class="overlay">Modellus</div>
+                </div>
+            </div>
+        </section>
+        <section id="project-gallery" class="links-section">
+            <h2>Project Gallery</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="project_images/project1.jpg" alt="Project 1">
+                    <div class="overlay">Project 1</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="project_images/project2.jpg" alt="Project 2">
+                    <div class="overlay">Project 2</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="project_images/project3.jpg" alt="Project 3">
+                    <div class="overlay">Project 3</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="project_images/project4.jpg" alt="Project 4">
+                    <div class="overlay">Project 4</div>
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="links-section">
+            <h2>Contato</h2>
+            <form>
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name"><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email"><br><br>
+                <label for="message">Mensagem:</label><br>
+                <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
+                <input type="submit" value="Enviar">
+            </form>
         </section>
     </main>
     <footer>
@@ -93,5 +189,3 @@
     </footer>
 </body>
 </html>
-
-
