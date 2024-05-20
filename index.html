@@ -9,11 +9,13 @@
             font-family: Arial, sans-serif;
             text-align: center;
             background-color: #242424;
-            color: #f0f0f0;
+            color: #e30f0f;
+            margin: 0;
+            overflow: hidden; /* Para evitar barras de rolagem quando a bolinha se move */
         }
         header {
-            background-color: #f0f0f0;
-            color: #333;
+            background-color: #3f3f3f;
+            color: #d6d6d6;
             padding: 20px;
         }
         h1 {
@@ -85,14 +87,22 @@
         footer {
             margin-top: 20px;
             padding: 20px;
-            background-color: #f0f0f0;
-            color: #333;
+            background-color: #3f3f3f;
+            color: #d6d6d6;
         }
         @media (max-width: 768px) {
             .networks-images img, .gallery-item {
                 width: 120px;
                 height: 120px;
             }
+        }
+        #ball {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border-radius: 50%;
+            z-index: 1000;
         }
     </style>
 </head>
@@ -103,7 +113,6 @@
     <nav>
         <a href="#about">Sobre</a>
         <a href="#projects">Projetos</a>
-        <a href="#contact">Contato</a>
     </nav>
     <main>
         <section id="about">
@@ -179,21 +188,32 @@
                 </div>
             </div>
         </section>
-        <section id="contact" class="links-section">
-            <h2>Contato</h2>
-            <form>
-                <label for="name">Nome:</label>
-                <input type="text" id="name" name="name"><br><br>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email"><br><br>
-                <label for="message">Mensagem:</label><br>
-                <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
-                <input type="submit" value="Enviar">
-            </form>
-        </section>
     </main>
     <footer>
-        <p>&copy; 2023 Gabriel J Santos</p>
+        <p>&copy; 2024 Gabriel J Santos</p>
     </footer>
+    <div id="ball"></div>
+    <script>
+        const ball = document.getElementById('ball');
+
+        function getRandomPosition() {
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            const randomX = Math.random() * (windowWidth - ball.clientWidth);
+            const randomY = Math.random() * (windowHeight - ball.clientHeight);
+            return { x: randomX, y: randomY };
+        }
+
+        function moveBall() {
+            const { x, y } = getRandomPosition();
+            ball.style.transition = 'transform 5s ease';
+            ball.style.transform = `translate(${x}px, ${y}px)`;
+        }
+
+        setInterval(moveBall, 5000);
+
+        // Initial position
+        moveBall();
+    </script>
 </body>
 </html>
