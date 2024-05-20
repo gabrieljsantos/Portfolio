@@ -16,14 +16,67 @@
         h1 {
             margin: 0;
         }
+        nav {
+            margin: 20px 0;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+        }
+        .links-section {
+            margin: 20px;
+        }
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-top: 20px;
+        }
+        .networks-images {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .networks-images img {
+            width: 320px;
+            height: 320px;
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>Olá, eu sou o <span id="nome">Gabriel J Santos</span></h1>
     </header>
+    <nav>
+        <a href="#about">Sobre</a>
+        <a href="#projects">Projetos</a>
+        <a href="#contact">Contato</a>
+    </nav>
     <main>
-        <p>Bem-vindo ao meu site pessoal. Aqui você encontrará informações sobre mim e meus projetos.</p>
+        <section id="about">
+            <p>Bem-vindo ao meu site pessoal. Aqui você encontrará informações sobre mim e meus projetos.</p>
+            <img src="images/minha-imagem.jpg" alt="Minha Imagem" class="profile-image">
+        </section>
+        <section id="my-networks" class="links-section">
+            <h2>My Networks</h2>
+            <div class="networks-images">
+                <a href="https://www.linkedin.com/in/gabriel-j-santos/" target="_blank">
+                    <img src="my_networks_img/GitHub.jpg" alt="LinkedIn">
+                </a>
+                <a href="https://github.com/gabrieljsantos" target="_blank">
+                    <img src="my_networks_img/GitHub.jpg" alt="GitHub">
+                </a>
+                <a href="https://www.thingiverse.com/seu-usuario" target="_blank">
+                    <img src="my_networks_img/GitHub.jpg" alt="Thingiverse">
+                </a>
+                <a href="https://scratch.mit.edu/users/seu-usuario" target="_blank">
+                    <img src="my_networks_img/GitHub.jpg" alt="Scratch">
+                </a>
+                <!-- Adicione mais imagens conforme necessário -->
+            </div>
+        </section>
     </main>
     <footer>
         <p>&copy; 2023 Gabriel J Santos</p>
