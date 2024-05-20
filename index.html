@@ -11,7 +11,6 @@
             background-color: #242424;
             color: #e30f0f;
             margin: 0;
-            overflow: hidden; /* Para evitar barras de rolagem quando a bolinha se move */
         }
         header {
             background-color: #3f3f3f;
@@ -95,14 +94,6 @@
                 width: 120px;
                 height: 120px;
             }
-        }
-        #ball {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background-color: red;
-            border-radius: 50%;
-            z-index: 1000;
         }
     </style>
 </head>
@@ -192,28 +183,5 @@
     <footer>
         <p>&copy; 2024 Gabriel J Santos</p>
     </footer>
-    <div id="ball"></div>
-    <script>
-        const ball = document.getElementById('ball');
-
-        function getRandomPosition() {
-            const windowWidth = window.innerWidth;
-            const windowHeight = window.innerHeight;
-            const randomX = Math.random() * (windowWidth - ball.clientWidth);
-            const randomY = Math.random() * (windowHeight - ball.clientHeight);
-            return { x: randomX, y: randomY };
-        }
-
-        function moveBall() {
-            const { x, y } = getRandomPosition();
-            ball.style.transition = 'transform 5s ease';
-            ball.style.transform = `translate(${x}px, ${y}px)`;
-        }
-
-        setInterval(moveBall, 5000);
-
-        // Initial position
-        moveBall();
-    </script>
 </body>
 </html>
