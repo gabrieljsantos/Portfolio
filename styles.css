@@ -1,3 +1,11 @@
+/* Estilo para a bolinha */
+.ball {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgb(119, 107, 107);
+}
 body {
     font-family: Arial, sans-serif;
     text-align: center;
