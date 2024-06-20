@@ -1,0 +1,104 @@
+/* Estilo para a bolinha */
+.ball {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgb(119, 107, 107);
+}
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #242424;
+    color: #e30f0f;
+    margin: 0;
+    transition: background-image 0.3s ease; 
+}
+body.background-hover {
+    background-image: url('Skills_img/MediBang Paint Pro/1.jpg');
+    background-size: cover;
+    background-position: center;
+}
+header {
+    background-color: #3f3f3f;
+    color: #d6d6d6;
+    padding: 20px;
+}
+h1 {
+    margin: 0;
+}
+nav {
+    margin: 20px 0;
+}
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+}
+nav a:hover {
+    color: #007BFF;
+}
+.links-section {
+    margin: 20px;
+}
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-top: 20px;
+}
+.networks-images {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+.networks-images img {
+    width: 160px;
+    height: 160px;
+}
+#my-networks h2, #Skills h2, #project-gallery h2 {
+    color: rgb(136, 136, 146);
+    font-size: 34px;
+}
+.gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+.gallery-item {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+.gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.gallery .overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 0 0 10px 10px;
+}
+footer {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #3f3f3f;
+    color: #d6d6d6;
+}
+@media (max-width: 768px) {
+    .networks-images img, .gallery-item {
+        width: 120px;
+        height: 120px;
+    }
+}
