@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subpágina Dinâmica</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header>
+    <h1>Projetos</h1>
+    <a href="../index.html">Voltar para Página Principal</a>
+  </header>
+  <main>
+    <div id="gallery" class="gallery"></div>
+  </main>
+  <footer>
+    <p>&copy; 2025 Gabriel J Santos</p>
+  </footer>
+  
+  <script>
+    async function loadGallery() {
+      try {
+        const response = await fetch('data.txt'); // Certifique-se de que o arquivo está acessível
+        const text = await response.text();
+        const gallery = document.getElementById('gallery');
+
+        text.split('\n').forEach(line => {
+          if (line.trim()) {
+            const [imagePath, link, name] = line.split('|');
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+
+            const img = document.createElement('img');
+            img.src = imagePath.trim();
+
+            const overlay = document.createElement('div');
+            overlay.className = 'overlay';
+
+            const linkElement = document.createElement('a');
+            linkElement.href = link.trim();
+            linkElement.textContent = name.trim();
+            linkElement.target = '_blank';
+
+            overlay.appendChild(linkElement);
+            item.appendChild(img);
+            item.appendChild(overlay);
+            gallery.appendChild(item);
+          }
+        });
+      } catch (error) {
+        console.error('Error loading gallery:', error);
+      }
+    }
+
+    window.onload = loadGallery;
+  </script>
+</body>
+</html>
