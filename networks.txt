@@ -1,0 +1,4 @@
+Instagram|https://www.instagram.com/gabriel_j.s_labs/|my_networks_img/Instagram.jpg
+GitHub|https://github.com/gabrieljsantos|my_networks_img/GitHub.jpg
+Thingiverse|https://www.thingiverse.com/3n1ac/designs|my_networks_img/Thingiverse.jpg
+LinkedIn|https://www.linkedin.com/in/gabriel-j-santos/|my_networks_img/Linkedin.jpg

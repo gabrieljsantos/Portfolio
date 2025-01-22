@@ -22,6 +22,7 @@ def generate_layout_images(images_folder, layout_file_path):
             x1 = (width // pixel_factor_for_grid) + 1 
             y1 = (height // pixel_factor_for_grid) + 1 
             # Adiciona a linha no formato desejado
+            
             layout_data.append(f"{x}|{y}|{x1}|{y1}|{image_name}")
             
         x += x1

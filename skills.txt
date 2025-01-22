@@ -1,0 +1,14 @@
+3D Print|skills_img/3D Print.jpg
+Arduino|skills_img/Arduino.jpg
+Blender (Begin)|skills_img/Blender.jpg
+Cameo 3|skills_img/Cameo 3.jpg
+CorelDRAW|skills_img/CorelDRAW.jpg
+C++ (Begin)|skills_img/CPP.jpg
+HTML (Begin)|skills_img/HTML.jpg
+JavaScript (Begin)|skills_img/JavaScript.jpg|skills/JavaScript.html
+MediBang Paint|skills_img/MediBang Paint Pro.jpg|https://flic.kr/s/aHBqjBrbnC
+Modellus|skills_img/Modellus.jpg|https://github.com/gabrieljsantos/Projects-made-in-Modellus
+Physics|skills_img/Physics.jpg
+Python (Inter)|skills_img/Python.jpg
+Scratch|skills_img/Scratch.jpg|https://scratch.mit.edu/users/3N1AC/
+SketchUp|skills_img/SketchUp.jpg

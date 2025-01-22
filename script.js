@@ -1,35 +1,66 @@
 // script.js
-document.addEventListener('DOMContentLoaded', (event) => {
-    const ball = document.querySelector('.ball');
-    const ballSize = 20; // Tamanho da bolinha
-    let x = 100; // Posição inicial x
-    let y = 100; // Posição inicial y
-    let dx = 2; // Velocidade x
-    let dy = 2; // Velocidade y
+// Função para carregar os dados de um arquivo de texto
+async function loadData(filePath) {
+    const response = await fetch(filePath);
+    const data = await response.text();
+    return data.split('\n').map(line => line.trim());
+}
 
-    function moveBall() {
-        const windowWidth = window.innerWidth;
-        const windowHeight = window.innerHeight;
+// Função para gerar a seção de redes sociais
+async function generateNetworks() {
+    const networks = await loadData('networks.txt');
+    const networksContainer = document.getElementById('networks-images');
 
-        // Atualiza a posição da bolinha
-        x += dx;
-        y += dy;
+    networks.forEach(line => {
+        const [name, link, image] = line.split('|');
+        const anchor = document.createElement('a');
+        anchor.href = link;
+        anchor.target = '_blank';
 
-        // Detecta colisão com as bordas e inverte a direção
-        if (x <= 0 || x + ballSize >= windowWidth) {
-            dx = -dx;
+        const img = document.createElement('img');
+        img.src = image;
+        img.alt = `${name} de Gabriel J Santos`;
+
+        anchor.appendChild(img);
+        networksContainer.appendChild(anchor);
+    });
+}
+
+// Função para gerar a seção de habilidades
+async function generateSkills() {
+    const skills = await loadData('skills.txt');
+    const skillsContainer = document.getElementById('skills-gallery');
+
+    skills.forEach(line => {
+        const [name, image, link] = line.split('|');
+        const galleryItem = document.createElement('div');
+        galleryItem.classList.add('gallery-item');
+
+        const img = document.createElement('img');
+        img.src = image;
+        img.alt = name;
+
+        const overlay = document.createElement('div');
+        overlay.classList.add('overlay');
+        overlay.textContent = name;
+
+        galleryItem.appendChild(img);
+        galleryItem.appendChild(overlay);
+
+        if (link) {
+            const anchor = document.createElement('a');
+            anchor.href = link;
+            anchor.target = '_blank';
+            anchor.appendChild(galleryItem);
+            skillsContainer.appendChild(anchor);
+        } else {
+            skillsContainer.appendChild(galleryItem);
         }
-        if (y <= 0 || y + ballSize >= windowHeight) {
-            dy = -dy;
-        }
+    });
+}
 
-        // Aplica a nova posição à bolinha
-        ball.style.transform = `translate(${x}px, ${y}px)`;
-
-        // Chama a função novamente no próximo frame
-        requestAnimationFrame(moveBall);
-    }
-
-    // Inicia o movimento da bolinha
-    moveBall();
-});
+// Carregar as redes sociais e as habilidades quando a página carregar
+window.onload = async () => {
+    await generateNetworks();
+    await generateSkills();
+};
