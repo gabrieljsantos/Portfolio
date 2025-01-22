@@ -20,7 +20,7 @@ def generate_layout_images(images_folder, layout_file_path):
         with Image.open(image_path) as img:
             width, height = img.size
             x1 = (width // pixel_factor_for_grid) + 1 
-            y1 = (height // pixel_factor_for_grid) + 1 
+            y1 = (height // pixel_factor_for_grid) + 1
             # Adiciona a linha no formato desejado
             
             layout_data.append(f"{x}|{y}|{x1}|{y1}|{image_name}")
@@ -37,6 +37,12 @@ def generate_layout_images(images_folder, layout_file_path):
 # Defina os caminhos das pastas
 images_folder = 'Galleries/3D/3D_imgs'  # Substitua pelo caminho real da pasta de imagens
 layout_file_path = 'Galleries/3D/layout.inf'  # Substitua pelo caminho real do arquivo layout.inf
+
+generate_layout_images(images_folder, layout_file_path)
+
+
+images_folder = 'Galleries/Personalizados/Personalizados_imgs'  # Substitua pelo caminho real da pasta de imagens
+layout_file_path = 'Galleries/Personalizados/layout.inf'  # Substitua pelo caminho real do arquivo layout.inf
 
 generate_layout_images(images_folder, layout_file_path)
 
