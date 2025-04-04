@@ -4,7 +4,8 @@ from PIL import Image
 grid = []
 grid_sized = 100
 pixel_factor_for_grid = 500
-grid_width = 10
+grid_width = 12
+grid_maximum_size = 3
 
 def generate_layout_images(images_folder, layout_file_path):
     # Lista as imagens da pasta
@@ -19,10 +20,26 @@ def generate_layout_images(images_folder, layout_file_path):
         # Abrindo a imagem e calculando a proporção
         with Image.open(image_path) as img:
             width, height = img.size
-            x1 = (width // pixel_factor_for_grid) + 1 
-            y1 = (height // pixel_factor_for_grid) + 1
+            x1 = round(width / pixel_factor_for_grid)
+            y1 = round(height / pixel_factor_for_grid)
+
+            if x1 > grid_maximum_size and x1 >= y1:
+                scale = grid_maximum_size / x1
+                x1 = grid_maximum_size
+                y1 = int(y1 * scale)
+
+            elif y1 > grid_maximum_size and y1 > x1:
+                scale = grid_maximum_size / y1
+                y1 = grid_maximum_size
+                x1 = int(x1 * scale)
+                
+            if x1 < 1 :
+                x1 = 1
+            if y1 < 1 :
+                y1 = 1
+
+
             # Adiciona a linha no formato desejado
-            
             layout_data.append(f"{x}|{y}|{x1}|{y1}|{image_name}")
             
         x += x1
