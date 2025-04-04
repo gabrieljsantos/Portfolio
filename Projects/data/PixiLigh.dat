@@ -1,0 +1,6 @@
+links
+Github|https://github.com/gabrieljsantos/PixiLight
+YouTube|https://youtube.com/playlist?list=PLhBF0uKvQZRoFk3NqDK15cDsuRq2ctc7B&si=hvWUAyTRfECxvh_e
+descrição
+Projeto de Animações LED Procedurais
+O PixiLight é um projeto maker desenvolvido para criar uma tela 8x8 de LEDs RGB (WS2812) controlada por um Arduino. O dispositivo é capaz de exibir caracteres, animações procedurais e até conteúdos carregados via cartão SD. Toda a estrutura foi projetada no SketchUp e fabricada com impressora 3D, utilizando PLA para o corpo e difusor frontal, garantindo um acabamento limpo e funcional.

@@ -1,10 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Subpágina Dinâmica</title>
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .popup-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      backdrop-filter: blur(4px);
+    }
+
+    .popup {
+      background-color: #1f1f1f;
+      color: #f0f0f0;
+      width: 95%;
+      max-width: 1200px;
+      display: flex;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid #444;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    }
+
+    .popup img {
+      max-width: 500px;
+      height: auto;
+      object-fit: contain;
+      border-right: 1px solid #444;
+      background: #000;
+    }
+
+    .popup-content {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .popup-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 16px;
+      color: #ffffff;
+    }
+
+    .popup-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 8px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #555;
+      padding-bottom: 12px;
+    }
+
+    .popup-links a {
+      background: #333;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 6px;
+      text-align: center;
+      text-decoration: none;
+      border: 1px solid #555;
+      transition: background 0.2s ease;
+    }
+
+    .popup-links a:hover {
+      background: #555;
+    }
+
+    .popup-description {
+      white-space: pre-wrap;
+      padding-top: 12px;
+      border-top: 1px solid #555;
+      line-height: 1.6;
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -17,17 +107,30 @@
   <footer>
     <p>&copy; 2025 Gabriel J Santos</p>
   </footer>
-  
+
+  <!-- Popup HTML -->
+  <div id="popupOverlay" class="popup-overlay">
+    <div class="popup">
+      <img id="popupImage" src="" alt="Imagem do Projeto">
+      <div class="popup-content">
+        <div id="popupTitle" class="popup-title"></div>
+        <div id="popupLinks" class="popup-links"></div>
+        <div id="popupDescription" class="popup-description"></div>
+      </div>
+    </div>
+    <div class="popup-close" onclick="hidePopup()">✕</div>
+  </div>
+
   <script>
     async function loadGallery() {
       try {
-        const response = await fetch('data.txt'); // Certifique-se de que o arquivo está acessível
+        const response = await fetch('data.txt');
         const text = await response.text();
         const gallery = document.getElementById('gallery');
 
         text.split('\n').forEach(line => {
           if (line.trim()) {
-            const [imagePath, link, name] = line.split('|');
+            const [imagePath, name] = line.split('|');
             const item = document.createElement('div');
             item.className = 'gallery-item';
 
@@ -36,22 +139,65 @@
 
             const overlay = document.createElement('div');
             overlay.className = 'overlay';
+            overlay.textContent = name.trim();
 
-            const linkElement = document.createElement('a');
-            linkElement.href = link.trim();
-            linkElement.textContent = name.trim();
-            linkElement.target = '_blank';
-
-            overlay.appendChild(linkElement);
             item.appendChild(img);
             item.appendChild(overlay);
+
+            item.addEventListener('click', () => showPopup(imagePath.trim(), name.trim()));
+
             gallery.appendChild(item);
           }
         });
       } catch (error) {
-        console.error('Error loading gallery:', error);
+        console.error('Erro ao carregar a galeria:', error);
       }
     }
+
+    async function showPopup(imageSrc, projectName) {
+      document.getElementById('popupImage').src = imageSrc;
+      document.getElementById('popupTitle').textContent = projectName;
+
+      try {
+        const response = await fetch(`../Projects/data/${projectName}.dat`);
+        const text = await response.text();
+
+        const [linksSection, ...descParts] = text.split(/\n(?=descri[cç][aã]o)/i);
+        const linksText = linksSection.replace(/links/i, '').trim();
+        const description = descParts.join('\n').replace(/descri[cç][aã]o/i, '').trim();
+
+        const linksContainer = document.getElementById('popupLinks');
+        linksContainer.innerHTML = '';
+        linksText.split('\n').forEach(line => {
+          if (line.includes('|')) {
+            const [text, url] = line.split('|');
+            const a = document.createElement('a');
+            a.href = url.trim();
+            a.textContent = text.trim();
+            a.target = '_blank';
+            linksContainer.appendChild(a);
+          }
+        });
+
+        document.getElementById('popupDescription').textContent = description;
+
+      } catch (error) {
+        document.getElementById('popupLinks').innerHTML = '';
+        document.getElementById('popupDescription').textContent = 'Descrição não encontrada.';
+      }
+
+      document.getElementById('popupOverlay').style.display = 'flex';
+    }
+
+    function hidePopup() {
+      document.getElementById('popupOverlay').style.display = 'none';
+    }
+
+    document.getElementById('popupOverlay').addEventListener('click', function (event) {
+      if (event.target === this) {
+        hidePopup();
+      }
+    });
 
     window.onload = loadGallery;
   </script>

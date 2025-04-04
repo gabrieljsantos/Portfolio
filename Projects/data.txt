@@ -1,10 +1,12 @@
-../Projects/Imgs_Projects/PixiLigh.jpg|https://github.com/gabrieljsantos/PixiLight|PixiLigh
-../Projects/Imgs_Projects/Fractal.Image-Generator.png|https://github.com/gabrieljsantos/Fractal.Image-Generator|Fractal.Image Generator
-../Projects/Imgs_Projects/r4d9.png|#r4d9|r4d9
-../Projects/Imgs_Projects/Filament Dehumidifier.jpg|https://github.com/gabrieljsantos/Filament-Dehumidifier|Filament Dehumidifier
-../Projects/Imgs_Projects/Mark I.jpg|https://www.linkedin.com/pulse/mark-i-um-experimento-do-efeito-fotoel%25C3%25A9trico-de-jesus-santos-vzhaf/?trackingId=YPyxPhJ6QiKaRGDXUlTcmQ%3D%3D|Mark I
-../Projects/Imgs_Projects/PONG 1972.jpg|https://github.com/gabrieljsantos/PONG|PONG 1972
-../Projects/Imgs_Projects/Six-Axis Robot Arm.png|#Six-Axis Robot Arm|Six-Axis Robot Arm
+../Projects/Imgs_Projects/PixiLigh.jpg|PixiLigh
+../Projects/Imgs_Projects/Fractal.Image-Generator.png|Fractal.Image Generator
+../Projects/Imgs_Projects/r4d9.png|r4d9
+../Projects/Imgs_Projects/Filament Dehumidifier.jpg|Filament Dehumidifier
+../Projects/Imgs_Projects/Mark I.jpg|Mark I
+../Projects/Imgs_Projects/Mark II.png|Mark II
+../Projects/Imgs_Projects/PONG 1972.jpg|PONG 1972
+../Projects/Imgs_Projects/Six-Axis Robot Arm.png|Six-Axis Robot Arm
+../Projects/Imgs_Projects/Windows Easy Launcher.png|Windows Easy Launcher
 
 
 
