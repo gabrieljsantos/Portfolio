@@ -1,4 +1,11 @@
 /* Estilo para a bolinha */
+a {
+    color: white;
+    text-decoration: none;
+}
+a:hover {
+    color: #ffcc00;
+}
 .ball {
     position: absolute;
     width: 20px;
