@@ -1,8 +1,8 @@
 
 
-const sizeGrid = 100; // Grid size in pixels
+const sizeGrid = 150; // Grid size in pixels
 const spacing = 0; // Spacing between grid cells in pixels
-const folder = 'Keychain_imgs/'; // Path to the folder containing images
+const folder = './Keychain_imgs/'; // Path to the folder containing images
 
 async function fetchLayoutData(filePath) {
     try {
